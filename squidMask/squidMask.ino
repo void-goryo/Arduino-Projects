@@ -1,20 +1,20 @@
 #include <Adafruit_NeoPixel.h>
 
-//god you need to fix the Adafruit_NeoPixel problem soon. It's ok for now, just ugly to look at.
+//all values are going to be usefull later to define
+//where the leds are going to be controlled
+//may be an idea later, but maybe add different themes
+#define ledPin A1
+#define ledCount 100
+
+Adafruit_NeoPixel strip(ledCount, ledPin, NEO_GRB + NEO_KHZ800);//you may need to change to NEO_RGB
+
+
 
 void setup() {
-  //all values are going to be usefull later to define
-  //where the leds are going to be controlled
-  //may be an idea later, but maybe add different themes
-  #define ledPin A1
-  #define ledCount 100
-
-  #define initial Adafruit_NeoPixel strip(ledCount, ledPin, NEO_GRB + NEO_KHZ800);//you may need to change to NEO_RGB
-  initial
 
   strip.begin();
-  strip.show();
   strip.setBrightness(100);
+  trianglefunc();
 
 }
 
@@ -25,28 +25,25 @@ void loop() {
   // method.setBrightness self explanitory
 
   //pre-defining possible ports for a big if else statment
-  int basic = A0;
+  int triangle = A0;
   int rainbow = A1;
 
-  //starting giant if else statment to detect what function to run
-  triangle();
-
   if(digitalRead(rainbow) == HIGH){
-    initial;
+    //initial;
     strip.clear();
     //rainbowfunc();
   }
-  if(digitalRead(basic) == HIGH) {
-    initial;
+  if(digitalRead(triangle) == HIGH) {
+    //initial;
     strip.clear();
-    triangle();
+    trianglefunc();
   }
 
 }
 
-void triangle() {
+void trianglefunc() {
   //this is going to be the glitch setup and will run upon startup
-  initial
+  //initial
   strip.fill(strip.Color(255,255,255,0),0,100); //color, starting led, ending led
   strip.show();
   
