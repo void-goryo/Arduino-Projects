@@ -1,0 +1,15 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  "version": "0.2.0",
+  "configurations": [  
+    {
+      "cwd": "/C:/Users/Gabe/Desktop/Arduino-Projects/squidMask",
+      "executable": "/squidMask.ino",
+      "name": "Debug Microcontroller",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "openocd"
+    }
+  ]
+}
