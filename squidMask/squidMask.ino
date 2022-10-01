@@ -25,7 +25,6 @@ void loop() {
   // method.show() updates method
   strip.clear();
   
-  test();
   //delay(1);
   
 }
@@ -35,14 +34,9 @@ void basic() {
   //DO NOT USE SETBRIGHTNESS
   strip.clear();
   //initial var
-  int glitch = random(10);
+  int glitch = random(9);
   int i = 0;
   int j = 0;
-  //logic var
-  int pos3 = strip.getPixelColor(3);
-  int colorPosR1 = random(6);
-  int colorPosR2 = random(7,13);
-  int colorVar = strip.getPixelColor(colorPosR1);
 
   randomSeed(analogRead(0));
   strip.fill(strip.Color(off));
@@ -54,65 +48,68 @@ void basic() {
   delay(random(50));
 
   if(glitch == 0){
-    if(colorPosR1 == 2 || colorPosR1 == 4){
-      
-      row1(colorPosR1);
+    int numRow = random(2);
+
+    if(numRow == 0){
+
+      int r1 = random(6);
+      distort(r1);
 
     }
+    else if(numRow == 1){
+
+      int r1 = random(6);
+      int r2 = random(6);
+      while(r2 == r1){
+
+        r2 = random(6);
+
+      }
+      distort(r1, r2);
+
+    }
+
+    else if(numRow == 2){
+      
+      int r1 = random(6);
+      int r2 = random(6);
+      while(r2 == r1){
+
+        r2 = random(6);
+
+      }
+      int r3 = random(6);
+      while(r3 == r2){
+
+        r3 = random(6);
+
+      }
+      distort(r1, r2, r3);
+
+    }
+
   }
 }
 
-void row1(int pos){
+
+
+void distort(int effect1){
+
   strip.clear();
 
-  int ledNum = random(6);
-  int leds[ledNum] = {};
-  int j = 0;
-  int i = 0;
-  int l = ledNum;
-    while(0 == 0){
-      //rng for what leds are assigned values
-      for(int c = 0; c <= ledNum; c++){
-        if(random(2) == 0){
-          leds[l] = c;
-          l--;
-        }
-      }
-      for(int c = leds[0]; c <= ledNum; c++){
-        int x = leds[c];
-        strip.setPixelColor(leds[x], strip.Color(white));
-        strip.show();
-        delay(25);
-      
-        while(0 == 0){
-          //first for loop is to turn the leds off
-          for(int g = leds[0]; g <= ledNum; g++){
-            int a = leds[g];
-            strip.setPixelColor(leds[a], strip.Color(off));
-          }
-          strip.show();
-          //second for loop for turning leds on
-          for(int g = leds[0]; g <= ledNum; g++){
-            int a = leds[g];
-            strip.setPixelColor(leds[a], strip.Color(white));
-          }
-          strip.show();
-          j++;
-          if(j >= random(500,1000)){
-            break;
-          }
-            
-        }
-      }
-      break;
-    }
+}
 
-  }
+void distort(int effect1, int effect2){
 
+  strip.clear();
 
+}
 
+void distort(int effect1, int effect2, int effect3){
 
+  strip.clear();
 
+}
 
 
 
@@ -170,22 +167,7 @@ void rainbow() {
 //use this to experiment to prevent having to revert to a previous commit
 void test(){
 
-  /*for(int i = 0; i <= 14; i++){
-    strip.setPixelColor(i, strip.Color(255,0,0));
-    strip.show();
-    delay(500);
-    strip.setPixelColor(i, strip.Color(0,255,0));
-    strip.show();
-    delay(500);
-    strip.setPixelColor(i, strip.Color(0,0,255));
-    strip.show();
-    delay(500);
-    strip.setPixelColor(i, strip.Color(0,0,0));
-    strip.show();
-    delay(500);
-  }*/
-  strip.setPixelColor(13, strip.Color(255,255,255));
-  strip.show();
+  
 
 }
 
