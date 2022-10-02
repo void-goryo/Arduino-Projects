@@ -38,13 +38,15 @@ void basic() {
   int i = 0;
   int j = 0;
 
+
+  //this is just an ugly block that sets leds to their default state
   randomSeed(analogRead(0));
-  strip.fill(strip.Color(off));
   strip.setPixelColor(3, strip.Color(white)); //color, starting led, ending led
   strip.setPixelColor(9, strip.Color(white)); //color, starting led, ending led
   strip.setPixelColor(11, strip.Color(white)); //color, starting led, ending led
   strip.show();
 
+  //this is be a higher delay when finished. I'm thinking about 500 or 1000 just to keep it *spooky*
   delay(random(50));
 
   if(glitch == 0){
@@ -56,10 +58,13 @@ void basic() {
       distort(r1);
 
     }
+    //these next two are cool
     else if(numRow == 1){
 
       int r1 = random(6);
       int r2 = random(6);
+
+      //catches r2 if it's the same as r1. This way we can prevent repitition and unwanted glitchs (kinda funny huh)
       while(r2 == r1){
 
         r2 = random(6);
@@ -73,12 +78,17 @@ void basic() {
       
       int r1 = random(6);
       int r2 = random(6);
+
+      //these two do the same thing, just twice
       while(r2 == r1){
 
         r2 = random(6);
 
       }
+
       int r3 = random(6);
+
+      //this goes off of r2
       while(r3 == r2){
 
         r3 = random(6);
@@ -93,19 +103,25 @@ void basic() {
 
 
 
-void distort(int effect1){
+void distort(int r1){
+
+  strip.clear();
+  int j = 0;
+  int leds[6] = {};
+  for(int i = (r1*7); i <= ((r1*7)+6); i++){
+    leds[j] = i;
+    j++;
+  }
+
+}
+
+void distort(int r1, int r2){
 
   strip.clear();
 
 }
 
-void distort(int effect1, int effect2){
-
-  strip.clear();
-
-}
-
-void distort(int effect1, int effect2, int effect3){
+void distort(int r1, int r2, int r3){
 
   strip.clear();
 
