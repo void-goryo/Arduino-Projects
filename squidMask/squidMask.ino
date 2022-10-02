@@ -1,4 +1,5 @@
 #include <Adafruit_NeoPixel.h>
+#include <Dictionary.h>
 
 //all values are going to be usefull later to define
 //where the leds are going to be controlled
@@ -107,9 +108,11 @@ void distort(int r1){
 
   strip.clear();
   int j = 0;
-  int leds[6] = {};
+  //<ledNum, ledCol>leds[6] = {};
+
+
   for(int i = (r1*7); i <= ((r1*7)+6); i++){
-    leds[j] = i;
+    //leds[j] = i;
     j++;
   }
 
