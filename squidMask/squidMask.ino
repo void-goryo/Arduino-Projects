@@ -1,5 +1,4 @@
 #include <Adafruit_NeoPixel.h>
-#include <Dictionary.h>
 
 //all values are going to be usefull later to define
 //where the leds are going to be controlled
@@ -79,6 +78,7 @@ void basic() {
       
       int r1 = random(6);
       int r2 = random(6);
+      int r3 = random(6);
 
       //these two do the same thing, just twice
       while(r2 == r1){
@@ -86,8 +86,6 @@ void basic() {
         r2 = random(6);
 
       }
-
-      int r3 = random(6);
 
       //this goes off of r2
       while(r3 == r2){
@@ -106,13 +104,21 @@ void basic() {
 
 void distort(int r1){
 
+  //clearing the current function so this one can run
   strip.clear();
+  //variables =^._.^=
   int j = 0;
-  //<ledNum, ledCol>leds[6] = {};
+  int leds[random(6)];
 
 
+  //looks for the position of leds based on row and starts itterating threw the leds
   for(int i = (r1*7); i <= ((r1*7)+6); i++){
-    //leds[j] = i;
+    if(j > sizeof(leds)){
+      break;
+    }
+    //I'm not sure if I want to be lazy yet. right now, duplicate values will exist which could cause issues down the line.
+    //If I'm not lazy later, I need to itterate threw the array and see if there are duplicate values, and the have the program change them
+    leds[j] = random(6);
     j++;
   }
 
