@@ -88,7 +88,7 @@ void basic() {
       }
 
       //this goes off of r2
-      while(r3 == r2){
+      while(r3 == r2 || r3 == r1){
 
         r3 = random(6);
 
@@ -106,20 +106,24 @@ void distort(int r1){
 
   //clearing the current function so this one can run
   strip.clear();
-  //variables =^._.^=
+  //variables =^. .^=
   int j = 0;
   int leds[random(6)];
 
 
+  //1 2 3 4 5 6 7
+  //_ _   _   _
+
+  //1 2 3 4 5 6 7
+  //    _   _
+
+
+
+
+
   //looks for the position of leds based on row and starts itterating threw the leds
-  for(int i = (r1*7); i <= ((r1*7)+6); i++){
-    if(j > sizeof(leds)){
-      break;
-    }
-    //I'm not sure if I want to be lazy yet. right now, duplicate values will exist which could cause issues down the line.
-    //If I'm not lazy later, I need to itterate threw the array and see if there are duplicate values, and the have the program change them
-    leds[j] = random(6);
-    j++;
+  for(int i = (r1*7); i <= ((r1*7)+sizeof(leds)); i++){
+    leds[i] = random(6);
   }
 
 }
