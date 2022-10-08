@@ -4,9 +4,7 @@
 //where the leds are going to be controlled
 //may be an idea later, but maybe add different themes
 #define ledPin A4
-#define ledCount 100
-#define white 255, 255, 255
-#define off 0,0,0
+#define ledCount 8
 
 Adafruit_NeoPixel strip(ledCount, ledPin, NEO_GRB + NEO_KHZ800);//you may need to change to NEO_RGB
 
@@ -15,6 +13,7 @@ Adafruit_NeoPixel strip(ledCount, ledPin, NEO_GRB + NEO_KHZ800);//you may need t
 void setup() {
   //pinMode(2, INPUT);
   //pinMode(3, INPUT);
+  strip.clear();
   strip.begin();
   strip.setBrightness(255); //This is only for dev. remove when finished
 }
@@ -23,24 +22,34 @@ void loop() {
   // syntax: Library functionName(ledCount, ledPin, type of rgb, khz)
   // syntax: method.setPixelColor(led, (r, g, b))
   // method.show() updates method
-  strip.clear();
   
+<<<<<<< HEAD
   //delay(1);
+=======
+  test();
+>>>>>>> parent of a75177e (Update squidMask.ino)
   
 }
 
 void basic() {
   //this is going to be the glitch setup and will run upon startup
   //DO NOT USE SETBRIGHTNESS
+<<<<<<< HEAD
   strip.clear();
   //initial var
   int glitch = random(9);
+=======
+  //initial
+  int w = 255;
+  int glitch = random(5);
+>>>>>>> parent of a75177e (Update squidMask.ino)
   int i = 0;
   int j = 0;
 
 
   //this is just an ugly block that sets leds to their default state
   randomSeed(analogRead(0));
+<<<<<<< HEAD
   strip.setPixelColor(3, strip.Color(white)); //color, starting led, ending led
   strip.setPixelColor(9, strip.Color(white)); //color, starting led, ending led
   strip.setPixelColor(11, strip.Color(white)); //color, starting led, ending led
@@ -56,7 +65,23 @@ void basic() {
 
       int r1 = random(6);
       distort(r1);
+=======
+  strip.fill(strip.Color(w,w,w)); //color, starting led, ending led
+  strip.show();
 
+  delay(random(50,1000));
+
+  if(glitch == 1){
+    while(i == 0){
+      strip.fill(strip.Color(w,w,w));
+      strip.show();
+>>>>>>> parent of a75177e (Update squidMask.ino)
+
+      j++;
+      delay(20);
+      if(j == 100){
+        i++;
+      }
     }
     //these next two are cool
     else if(numRow == 1){
@@ -98,8 +123,10 @@ void basic() {
     }
 
   }
+  
 }
 
+<<<<<<< HEAD
 
 
 void distort(int r1){
@@ -141,6 +168,8 @@ void distort(int r1, int r2, int r3){
 }
 
 
+=======
+>>>>>>> parent of a75177e (Update squidMask.ino)
 
 void rainbow() {
   int c = 0;
@@ -192,11 +221,26 @@ void rainbow() {
   }
 }
 
-
-//use this to experiment to prevent having to revert to a previous commit
 void test(){
 
+<<<<<<< HEAD
   
+=======
+  int colorPos = random(6);
+  int pos3 = strip.getPixelColor(3);
+  int colorVal = strip.getPixelColor(colorPos);
+
+  strip.setPixelColor(3, strip.Color(255, 255, 255));
+  strip.show();
+>>>>>>> parent of a75177e (Update squidMask.ino)
+
+  while(0 == 0){
+    colorPos = random(6);
+
+    if(pos3 == (255, 255, 255)){
+      
+    }
+  }
 
 }
 
