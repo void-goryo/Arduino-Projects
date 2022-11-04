@@ -16,7 +16,7 @@ void setup() {
   //pinMode(2, INPUT);
   //pinMode(3, INPUT);
   strip.begin();
-  strip.setBrightness(255); //This is only for dev. remove when finished
+  //strip.setBrightness(50); //This is only for dev. remove when finished
 }
 
 void loop() {
@@ -24,8 +24,27 @@ void loop() {
   // syntax: method.setPixelColor(led, (r, g, b))
   // method.show() updates method
   strip.clear();
-  
-  //delay(1);
+  //3, 9, 11, 16, 18, 22, 27, 30, 34, 36-42
+
+  /*strip.setPixelColor(10, strip.Color(white));
+  strip.setPixelColor(16, strip.Color(white));
+  strip.setPixelColor(18, strip.Color(white));
+  strip.setPixelColor(22, strip.Color(white));
+  strip.setPixelColor(26, strip.Color(white));
+  strip.setPixelColor(28, strip.Color(white));
+  strip.setPixelColor(29, strip.Color(white));
+  strip.setPixelColor(30, strip.Color(white));
+  strip.setPixelColor(31, strip.Color(white));
+  strip.setPixelColor(32, strip.Color(white));
+  strip.setPixelColor(33, strip.Color(white));
+  strip.setPixelColor(34, strip.Color(white));*/
+
+  //strip.fill(strip.Color(white), 1, 5);
+  //strip.fill(strip.Color(white), )
+
+  rainbow();
+
+  strip.show();
   
 }
 
@@ -108,23 +127,29 @@ void distort(int r1){
   strip.clear();
   //variables =^. .^=
   int j = 0;
+  int s = random(200, 500);
   int leds[random(6)];
 
 
-  //1 2 3 4 5 6 7
-  //_ _   _   _
-
-  //1 2 3 4 5 6 7
-  //    _   _
-
-
-
-
-
   //looks for the position of leds based on row and starts itterating threw the leds
-  for(int i = (r1*7); i <= ((r1*7)+sizeof(leds)); i++){
-    leds[i] = random(6);
+  for(int i = 0; i <= sizeof(leds); i++){
+    leds[i] = (r1*7) + random(6);
   }
+
+  while(j != s){
+
+    int b = random(255);    //brightness value
+
+    for(int i = 0; i <= sizeof(leds); i++){
+
+      strip.setPixelColor(leds[i], strip.Color(b, b, b));
+
+    }
+    strip.show();
+    j++;
+
+  }
+  
 
 }
 
@@ -150,7 +175,7 @@ void rainbow() {
   int z = 0;
 
   while(z < 255){
-    strip.fill(strip.Color(x,y,z),0,5);
+    strip.fill(strip.Color(x,y,z),0,100);
     strip.show();
     delay(10);
     z++;
@@ -158,7 +183,7 @@ void rainbow() {
 
   while(c == 0){
     while(i == 0){
-      strip.fill(strip.Color(x,y,z),0,5);
+      strip.fill(strip.Color(x,y,z),0,100);
       strip.show();
       delay(10);
       z--;
@@ -169,7 +194,7 @@ void rainbow() {
     }
 
     while(i == 1){
-      strip.fill(strip.Color(x,y,z),0,5);
+      strip.fill(strip.Color(x,y,z),0,100);
       strip.show();
       delay(10);
       x--;
