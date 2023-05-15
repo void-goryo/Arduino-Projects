@@ -4,7 +4,7 @@
 //where the leds are going to be controlled
 //may be an idea later, but maybe add different themes
 #define ledPin A4
-#define ledCount 100
+#define ledCount 35
 #define white 255, 255, 255
 #define off 0,0,0
 
